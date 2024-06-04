@@ -35,10 +35,10 @@ export const Signin = ()=>{
             setLoading(false);
         }
     };
-    return <div className="bg-cyan-300 h-screen flex justify-center">
+    return (<div className="bg-cyan-300 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
             <div className="rounded-lg bg-cyan-200 w-80 text-center p-2 h-max px-4">
-                <Heading label={"Sign up"}/>
+                <Heading label={"Sign in"}/>
                 <Subheading label={"Enter your details to sign in"}/>
                 <InputBox onChange={(e)=>{
                     setUsername(e.target.value)
@@ -54,5 +54,5 @@ export const Signin = ()=>{
                 <BottomWarning label={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"}/>
             </div>
         </div>
-    </div>
+    </div>)
 }

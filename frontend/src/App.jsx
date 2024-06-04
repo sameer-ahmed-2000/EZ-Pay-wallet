@@ -1,6 +1,8 @@
 import { BrowserRouter, Navigate, Route, Routes, } from "react-router-dom"
 
 //import { AuthContext } from "./authentications/authContext"
+import { AuthProvider } from "./authentications/AuthContext"
+import { ProtectedRoute } from "./authentications/ProtectedRoute"
 import { Dashboard } from "./pages/Dashboard"
 import { SendMoney } from "./pages/SendMoney"
 import { Signin } from "./pages/Signin"
@@ -8,7 +10,7 @@ import { Signup } from "./pages/Signup"
 
 function App() {
   return <div>
-
+    <AuthProvider>
     <BrowserRouter>
 
       <Routes>
@@ -17,12 +19,14 @@ function App() {
         <Route path="/signin" element={<Signin></Signin>}/>
         <Route
         path="/dashboard"
-        element={<Dashboard/>}/>
+        element={<ProtectedRoute><Dashboard/></ProtectedRoute>
+        }/>
         <Route
         path="*" element={<Navigate to={"/dashboard"}/>}/>
-        <Route path="/sendmoney" element={<SendMoney></SendMoney>}/>
+        <Route path="/sendmoney" element={<ProtectedRoute><SendMoney/></ProtectedRoute>}/>
       </Routes>
     </BrowserRouter>
+    </AuthProvider>
 </div>
     
   

@@ -18,7 +18,7 @@ router.post("/signup",async (req,res)=>{
     const {success}=signupSchema.safeParse(req.body);
     if (!success){
         return res.status(411).json({
-            message:"Incorrect inputs"
+            message:"Incorrect inputs",error: error.errors
         })
     }
     const existingUser =await User.findOne({
@@ -27,6 +27,7 @@ router.post("/signup",async (req,res)=>{
     if (existingUser){
         return res.status(411).json({
             message:"Email is already taken"
+            
         })
     }
     const dbUser = await User.create({
@@ -83,7 +84,7 @@ const updateBody=zod.object({
     lastname: zod.string(),
     password: zod.string(),
 })
-router.put("/", authMiddleware, async (req,res)=>{
+router.put("/me", authMiddleware, async (req,res)=>{
     const { success }=updateBody.safeParse(req.body)
     if(!success){
         res.status(411).json({
