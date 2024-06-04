@@ -1,14 +1,13 @@
 import axios from "axios"
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { BottomWarning } from "../Componenets/BottomWarning"
 import { Button } from "../Componenets/Button"
 import { Heading } from "../Componenets/Heading"
 import { InputBox } from "../Componenets/InputBox"
 import { Subheading } from "../Componenets/SubHeading"
-import { AuthContext } from "../authentications/authContext"
+//import { AuthContext } from "../authentications/authContext"
 export const Signin = ()=>{
-    const {login} = useContext(AuthContext);
     const navigate = useNavigate();
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");

@@ -1,11 +1,11 @@
+import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { BottomWarning } from "../Componenets/BottomWarning"
 import { Button } from "../Componenets/Button"
 import { Heading } from "../Componenets/Heading"
 import { InputBox } from "../Componenets/InputBox"
 import { Subheading } from "../Componenets/SubHeading"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
 
 export const Signup = ()=>{
     const [firstName,setFirstName]=useState("");

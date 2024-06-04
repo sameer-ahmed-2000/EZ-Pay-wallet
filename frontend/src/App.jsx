@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes, } from "react-router-dom"
 
-import { AuthContext } from "./authentications/authContext"
+//import { AuthContext } from "./authentications/authContext"
 import { Dashboard } from "./pages/Dashboard"
 import { SendMoney } from "./pages/SendMoney"
 import { Signin } from "./pages/Signin"
@@ -14,7 +14,7 @@ function App() {
       <Routes>
 
         <Route path="/signup" element={<Signup/>}/>
-        <Route path="/signin" element={<AuthContext><Signin></Signin></AuthContext>}/>
+        <Route path="/signin" element={<Signin></Signin>}/>
         <Route
         path="/dashboard"
         element={<Dashboard/>}/>
