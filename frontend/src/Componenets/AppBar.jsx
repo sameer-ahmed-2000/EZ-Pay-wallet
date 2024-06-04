@@ -46,7 +46,7 @@ return (
         </div>
         <div className="flex">
         {user && user.firstName &&(
-        <div>
+        <>
             <div className="flex flex-col justify-center h-full mr-4">
                 Welcome, {user.firstName.toUpperCase()}
             </div>
@@ -55,7 +55,7 @@ return (
                     {user.firstName[0].toUpperCase()}
                 </div>
             </div>
-        </div>
+        </>
         )}
         </div>
     </div>
