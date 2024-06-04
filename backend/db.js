@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb+srv://sameersameersmr20:LYLdRKLF5y7zTu1O@cluster0.mdm2hxg.mongodb.net/ezpay");
+mongoose.connect("mongodb+srv://sameersameersmr20:LYLdRKLF5y7zTu1O@cluster0.mdm2hxg.mongodb.net/Spay");
 
 const userSchema = new mongoose.Schema({
     username: {
