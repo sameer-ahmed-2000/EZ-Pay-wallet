@@ -1,1 +1,1 @@
-# EZ-Pay
+# EZ-Pay Wallet
