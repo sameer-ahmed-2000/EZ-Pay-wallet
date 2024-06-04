@@ -33,7 +33,7 @@ export const Signup = ()=>{
             localStorage.setItem("token",response.data.token);
             navigate("/dashboard")
         }catch(err){
-            setError("Sign in failed, Please check your credentials and try again");
+            setError("Sign up failed, Please check your credentials and try again");
         }finally{
             setLoading(false);
         }
