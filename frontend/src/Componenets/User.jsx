@@ -25,7 +25,7 @@ export const Users=({})=>{
     useEffect(()=>{
         const fetchUsers=async()=>{
             try{
-                const response=await axios.get("http://localhost:3000/api/v1/user/bulk?filter="+filter+"&page="+currentPage);
+                const response=await axios.get("https://spay-zgxu.onrender.com/api/v1/user/bulk?filter="+filter+"&page="+currentPage);
                 const filteredUsers = response.data.user.filter(
                     (user) => user._id !== currentUserId
                 );

@@ -49,7 +49,7 @@ const handleLogout = () => {
 const handleUpdate = async (updatedUser) => {
     try {
         const token = localStorage.getItem('token');
-        await axios.put('http://localhost:3000/api/v1/user/me', updatedUser, {
+        await axios.put('https://spay-zgxu.onrender.com/api/v1/user/me', updatedUser, {
         headers: {
             Authorization: `Bearer ${token}`
         }
