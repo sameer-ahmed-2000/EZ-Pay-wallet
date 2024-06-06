@@ -11,7 +11,7 @@ const getUserDetails=async()=>{
     }
 
     try{
-        const response = await axios.get('http://localhost:3000/api/v1/user/me',{
+        const response = await axios.get('https://spay-zgxu.onrender.com/api/v1/user/me',{
             headers:{
                 Authorization:`Bearer ${token}`
             }
