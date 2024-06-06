@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const zod=require("zod");
-
+require('dotenv').config();
 const {User, Account}=require("../db");
 const jwt= require("jsonwebtoken")
-const {JWT_SECRET} = require("../config");
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const { authMiddleware } = require("../middleware")
 const signupSchema=zod.object({
@@ -100,25 +100,34 @@ router.put("/me", authMiddleware, async (req,res)=>{
 
 router.get("/bulk", async (req,res)=>{
     const filter = req.query.filter || "";
-
-    const users = await User.find({
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
+    const query={
         $or:[{
             firstName:{
-                "$regex": filter
+                "$regex": filter, "$options": "i"
             }
         },{
             lastName:{
-                "$regex": filter
+                "$regex": filter, "$options": "i"
             }
-        }]
-    })
+        }],
+        _id: { "$ne": req.userId }
+    };
+    const totalUsers = await User.countDocuments(query);
+    const totalPages = Math.ceil(totalUsers / limit);
+    const users = await User.find(query)
+        .skip(skip)
+        .limit(limit)
     res.json({
         user:users.map(user=>({
             username: user.username,
             firstName:user.firstName,
             lastName: user.lastName,
             _id: user._id
-        }))
+        })),
+        totalPages:totalPages
     })
 });
 router.get("/me",authMiddleware,async (req,res)=>{
